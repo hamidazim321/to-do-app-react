@@ -1,5 +1,6 @@
 import { useState } from 'react';
-const InputTodo = ({addTodoItem}) => {
+
+const InputTodo = ({ addTodoItem }) => {
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState(null);
 
@@ -12,15 +13,15 @@ const InputTodo = ({addTodoItem}) => {
     if (title.trim()) {
       addTodoItem(title);
       setTitle('');
-      setMessage(null)
+      setMessage(null);
     } else {
-      setMessage('please add an item')
+      setMessage('please add an item');
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}  className="form-container">
+      <form onSubmit={handleSubmit} className="form-container">
         <input
           className="input-text"
           type="text"
@@ -34,4 +35,5 @@ const InputTodo = ({addTodoItem}) => {
     </>
   );
 };
+
 export default InputTodo;
