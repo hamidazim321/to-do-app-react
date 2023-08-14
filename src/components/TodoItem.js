@@ -1,5 +1,6 @@
 import styles from 'styles/TodoItem.module.css';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const TodoItem = ({
   itemProp, handleChange, delTodo, setUpdate,
@@ -39,8 +40,8 @@ const TodoItem = ({
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
-        <button onClick={() => { delTodo(itemProp.id); }}>Delete</button>
+        <button type="button" onClick={handleEditing}>Edit</button>
+        <button type="button" onClick={() => { delTodo(itemProp.id); }}>Delete</button>
         <span style={itemProp.completed ? completedStyle : null}>
           {itemProp.title}
         </span>
@@ -55,5 +56,16 @@ const TodoItem = ({
       />
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  itemProp: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
 };
 export default TodoItem;
