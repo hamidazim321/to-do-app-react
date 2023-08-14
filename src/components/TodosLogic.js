@@ -3,7 +3,7 @@ import TodosList from "components/TodoList";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 const TodosLogic = () => {
-  
+
   const initialTodos = () => {
     return JSON.parse(localStorage.getItem('todos')) || []
   }
@@ -11,9 +11,7 @@ const TodosLogic = () => {
   const [todos, setTodos] = useState(initialTodos());
 
   useEffect(() => {
-    const temp = JSON.stringify(todos);
-    localStorage.setItem('todos', temp);
-    console.log(initialTodos())
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
   const addTodoItem = (title) => {
